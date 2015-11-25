@@ -27,7 +27,7 @@ public class UserBean implements UserBeanRemote {
    
     
     /**
-     *
+     *Legger til brukerer i db gjennom entity manager
      * @param username
      * @param password
      * 
@@ -51,7 +51,7 @@ public class UserBean implements UserBeanRemote {
     public boolean validate(String un, String pw){
         TypedQuery<User> query = 
                 em.createQuery("SELECT * from USER where username='"+un+"'&& password='"+pw+"'",User.class);
-        //List<User>;
+        List<User> users2 = query.getResultList();
         
         
         String dbUsername = "resultset from query";
