@@ -24,12 +24,13 @@ public class UserBean implements UserBeanRemote {
 
     @PersistenceContext
     EntityManager em;
+   
     
     /**
      *
      * @param username
      * @param password
-     * @return
+     * 
      */
     @Override
     public void addUser(String username, String password){
@@ -39,6 +40,26 @@ public class UserBean implements UserBeanRemote {
         u.setPW(password);
         
         em.persist(u);
+        
+    }
+    
+    /*
+    Validates the login info, username and password with the User table in the 
+    DB
+    */
+    @Override
+    public boolean validate(String un, String pw){
+        TypedQuery<User> query = 
+                em.createQuery("SELECT * from USER where username='"+un+"'&& password='"+pw+"'",User.class);
+        //List<User>;
+        
+        
+        String dbUsername = "resultset from query";
+        String dbPassword = "resultset from query";
+        
+        
+        return un.equals(dbUsername)&&pw.equals(dbPassword);
+        //return true om det stemmer
         
     }
     

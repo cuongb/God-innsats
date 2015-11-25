@@ -15,6 +15,8 @@ import javax.ejb.Remote;
 public interface UserBeanRemote {
 
     public void addUser(String username, String Password);
+
+    public boolean validate(String un, String pw);
    
 
     

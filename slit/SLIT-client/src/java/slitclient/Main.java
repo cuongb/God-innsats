@@ -45,11 +45,24 @@ public class Main {
         
         
     }
-    
+    //Creates a user, and logs in.
     public void Login(){
         UserRemote.addUser("testUN", "testPW");
+        
+        if(UserRemote.validate("testUN", "testPW"))
+        {
+            //Set up the frame after logging in.
+            
+        }
+        else
+        {
+            System.out.println("Error, wrong password or username");
+        }
+        
+        }
+        
         
     }
     
     
-}
+
